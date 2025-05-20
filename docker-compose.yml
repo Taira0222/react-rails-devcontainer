@@ -1,0 +1,45 @@
+version: '3.9'
+
+services:
+  backend:
+    build:
+      context: ./backend #backendのコンテナの場所
+    volumes:
+      - ./backend:/app
+      - bundle-volume:/usr/local/bundle
+    environment:
+      BINDING: 0.0.0.0
+      RAILS_ENV: development
+      DB_HOST: db
+      DB_USERNAME: postgres
+      DB_PASSWORD: password
+      DB_NAME: myapp_development
+    command: sleep infinity # ターミナルでコードを実行するためのコマンド
+    depends_on: #dbが先に立ち上がってから起動
+      - db
+    ports:
+      - '3000:3000'
+
+  frontend:
+    build:
+      context: ./frontend #frontendのコンテナの場所
+    working_dir: /app # コンテナ内のappの場所
+    volumes:
+      - ./frontend:/app
+    command: sleep infinity
+    ports:
+      - '5173:5173'
+
+  db:
+    image: postgres:15
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: myapp_development
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  bundle-volume:
+  pgdata:

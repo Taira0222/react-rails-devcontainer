@@ -1,0 +1,17 @@
+{
+  "name": "Untitled Node.js project",
+  "dockerComposeFile": ["../../docker-compose.yml"],
+  "service": "frontend",
+  "workspaceFolder": "/app",
+  "customizations": {
+    "vscode": {
+      "extensions": ["dbaeumer.vscode-eslint", "esbenp.prettier-vscode"]
+    }
+  },
+  "forwardPorts": [5173],
+  "containerEnv": {
+    "CHOKIDAR_USEPOLLING": "true"
+  },
+
+  "remoteUser": "node"
+}
