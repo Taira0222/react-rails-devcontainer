@@ -8,15 +8,17 @@
 
 ```
 rails-react/
-├── backend/            # Rails API（Ruby on Rails 8, PostgreSQL）
+├── backend/                 # Rails API
+│   ├── .devcontainer/       # Rails 用 DevContainer
 │   ├── Dockerfile
-│   └── ...（Rails のコードなど）
-├── frontend/           # React（Vite, TypeScript 対応可）
+│   └── ...
+├── frontend/                # React (Vite)
+│   ├── .devcontainer/       # React 用 DevContainer
 │   ├── Dockerfile
-│   └── ...（React のコードなど）
-├── docker-compose.yml  # 開発用コンテナ定義
-└── .devcontainer/
-    └── devcontainer.json # backend（Rails）用 DevContainer 設定
+│   └── ...
+├── docker-compose.yml       # Rails・React・DB をまとめて起動
+├── .github/workflows/       # CI 定義 (RSpec, Vitest など)
+└── .gitignore               # .env や node_modules などを除外
 ```
 
 ## 特長
@@ -33,7 +35,7 @@ rails-react/
 
   - バックエンドとフロントエンドを完全に分離して開発・デプロイが可能です。
 
-- **ボリューム管理/依存キャッシュ**
+- **ボリューム管理/ 依存キャッシュ**
 
   - Gem や node_modules のインストールを高速化。
 
@@ -52,9 +54,9 @@ cd rails-react
 
 - VS Code の「Dev Containers」拡張機能をインストールしてください。
 - プロジェクトルートで「Open in Container」を選択。
-- backend のコンテナを開きたい場合は `code ./backend`、frontend の場合は `code ./frontend` でそれぞれ開いてください。
+- backend のコンテナを開きたい場合は `code ./backend`、frontend の場合は `code ./frontend`でそれぞれ開いてください。
 - 左下のボタンを押すか、devcontainer.json を開くと reopen するか聞かれるので、reopen を選択してください。
-- 詳しくは最後に DevContainer の使い方で確認してください
+- 詳しくは最後の DevContainer の使い方で確認してください
 
 ### 3. 初期化コマンド（初回のみ）
 
@@ -104,9 +106,20 @@ npm run dev
 
 - アクセス: `http://localhost:5173`
 
-#### DB（PostgreSQL）
+---
 
-- 接続情報は `docker-compose.yml` の `db` サービスを参照してください。
+## セキュリティ設定
+
+- このテンプレートは `.env` ファイルにより、docker-compose.yml のデータベースのユーザー名やパスワードなどを記述しています。
+
+- .env の内容は適宜変えてもらって構いません。
+
+- `.env` には機密情報を含むため、必ず `.gitignore` に除外設定をしてください。
+
+```bash
+#.gitignore
+.env
+```
 
 ---
 

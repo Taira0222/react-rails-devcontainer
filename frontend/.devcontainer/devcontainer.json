@@ -1,5 +1,5 @@
 {
-  "name": "Untitled Node.js project",
+  "name": "Frontend React",
   "dockerComposeFile": ["../../docker-compose.yml"],
   "service": "frontend",
   "workspaceFolder": "/app",

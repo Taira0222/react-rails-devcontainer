@@ -1,9 +1,9 @@
 {
-  "name": "Rails API + React DevContainer",
-  "dockerComposeFile": ["../docker-compose.yml"],
+  "name": "Backend Rails API + PostgreSQL",
+  "dockerComposeFile": ["../../docker-compose.yml"],
   "service": "backend",
   "runServices": ["backend", "frontend", "db"],
-  "forwardPorts": [3000, 5173, 5432],
+  "forwardPorts": [3000, 5432],
   "workspaceFolder": "/app",
   "remoteUser": "vscode",
   "customizations": {

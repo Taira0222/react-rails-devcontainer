@@ -11,9 +11,9 @@ services:
       BINDING: 0.0.0.0
       RAILS_ENV: development
       DB_HOST: db
-      DB_USERNAME: postgres
-      DB_PASSWORD: password
-      DB_NAME: myapp_development
+      DB_USERNAME: ${POSTGRES_USER}
+      DB_PASSWORD: ${POSTGRES_PASSWORD}
+      DB_NAME: ${POSTGRES_DB}
     command: sleep infinity # ターミナルでコードを実行するためのコマンド
     depends_on: #dbが先に立ち上がってから起動
       - db
@@ -23,9 +23,9 @@ services:
   frontend:
     build:
       context: ./frontend #frontendのコンテナの場所
-    working_dir: /app # コンテナ内のappの場所
     volumes:
       - ./frontend:/app
+      - node_modules-volume:/app/node_modules #node_modulesはDockerEngine上で管理する
     command: sleep infinity
     ports:
       - '5173:5173'
@@ -34,12 +34,13 @@ services:
     image: postgres:15
     restart: unless-stopped
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: password
-      POSTGRES_DB: myapp_development
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
     volumes:
       - pgdata:/var/lib/postgresql/data
 
 volumes:
   bundle-volume:
   pgdata:
+  node_modules-volume:
