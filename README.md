@@ -18,7 +18,7 @@ rails-react/
 │   └── ...
 ├── docker-compose.yml       # Rails・React・DB をまとめて起動
 ├── .github/workflows/       # CI 定義 (RSpec, Vitest など)
-└── .gitignore               # .env や node_modules などを除外
+└── .gitignore               # .env などを除外
 ```
 
 ## 特長
