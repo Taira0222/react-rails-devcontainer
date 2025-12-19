@@ -1,6 +1,10 @@
 # React × Rails(API) × DevContainer テンプレート
 
-このリポジトリは、**React（Vite）+ Rails（API モード）+ PostgreSQL** によるモダンなフルスタック開発環境を、\*\*VS Code DevContainer（Docker）\*\*で快適に構築・運用できるテンプレートです。
+このリポジトリは、**React（Vite）+ Rails（API モード）+ PostgreSQL** によるモダンなフルスタック開発環境を、VS Code DevContainer（Docker）で快適に構築・運用できるテンプレートです。
+
+## 実行環境
+
+- windows 11
 
 ---
 
@@ -43,11 +47,17 @@ rails-react/
 
 ## セットアップ（ローカル開発）
 
+### 0. レポジトリをフォークする
+
+ご自身のディレクトリに
+https://github.com/Taira0222/react-rails-devcontainer
+をフォークしてください
+
 ### 1. リポジトリをクローン
 
 ```bash
 git clone https://github.com/your-username/react-rails-devcontainer.git
-cd rails-react
+cd react-rails-devcontainer
 ```
 
 ### 2. VS Code で DevContainer を開く
@@ -112,7 +122,7 @@ npm run dev
 
 - このテンプレートは `.env` ファイルにより、docker-compose.yml のデータベースのユーザー名やパスワードなどを記述しています。
 
-- .env の内容は適宜変えてもらって構いません。
+- .env の内容は適宜変えることを推奨します。
 
 - `.env` には機密情報を含むため、必ず `.gitignore` に除外設定をしてください。
 

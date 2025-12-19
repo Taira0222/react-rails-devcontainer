@@ -1,4 +1,4 @@
-version: '3.9'
+version: '3.8'
 
 services:
   backend:
@@ -22,10 +22,9 @@ services:
 
   frontend:
     build:
-      context: ./frontend #frontendのコンテナの場所
+      context: ./frontend # Dockerfileの場所
     volumes:
-      - ./frontend:/app
-      - node_modules-volume:/app/node_modules #node_modulesはDockerEngine上で管理する
+      - ./frontend:/app # frontendのコードをマウント
     command: sleep infinity
     ports:
       - '5173:5173'
@@ -43,4 +42,3 @@ services:
 volumes:
   bundle-volume:
   pgdata:
-  node_modules-volume:
